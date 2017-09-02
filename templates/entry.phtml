@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <title>Nightingale Nightmare</title>
+    </head>
+    <body>
+
+        <form method="post" action="/entry">
+
+        <?php 
+            if (isset($data['confirm'])) {
+                $runner = $data['confirm'];
+            ?>
+                <div class="confirm">
+                <b>Added:</b> <?=$runner->first_name .' ' .$runner->last_name; ?> added at time <?=$runner->finish_time?>
+                </div>
+            <?php
+            }
+        ?>
+
+        <div>
+            <label>Bib #
+                <input name="bib" type="number" min="1" max="200" autofocus required>
+            </label>
+        </div>
+
+        <div>
+            <label>Time
+                <input name="finish_time" type="time" step="1" required>
+            </label>
+        </div>
+
+        <div>
+            <input type="submit" value="Add">
+        </div>
+
+        </form>
+
+
+
+<style>
+
+body {
+    font-family: helvetica, 'sans-serif';
+}
+
+form {
+    width: 80%;
+    margin: 10% auto;
+}
+
+form div {
+    margin: 20px;
+}
+
+label {
+    font-size: 32px;
+    width: 30%;
+}
+
+input {
+    width: 70%;
+    font-size: 32px;
+    display: inline-block;
+}
+
+input[type=submit] {
+    width: 200px;
+    margin: 0 80px;
+    font-size: 32px;
+}
+
+.confirm {
+    background-color: PaleGreen;
+    color: DarkGreen;
+    padding: 0.5rem;
+    margin: 1rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+</style>
+    </body>
+</html>

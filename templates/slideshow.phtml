@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <title>Nightingale Nightmare</title>
+
+        <link rel="stylesheet" href="/css/reveal.css">
+        <link rel="stylesheet" href="/css/theme/nightmare.css">
+
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+            <?php
+                foreach($data['photos'] as $photo) {
+            ?>
+                <section<?php
+                            if ($photo) {
+                                echo ' data-background-image="/photos/'.$photo->path.'"';
+                            }
+                    ?>> 
+                </section>
+            <?php
+                }
+            ?>
+            </div>
+        </div>
+
+        <script src="/lib/js/head.min.js"></script>
+        <script src="/js/reveal.js"></script>
+
+        <script>
+            // More info https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                history: false,
+                progress: false,
+                center: true,
+                loop: true,
+                autoSlide: 5000,
+
+                // More info https://github.com/hakimel/reveal.js#dependencies
+                dependencies: [
+                    { src: '/plugin/markdown/marked.js' },
+                    { src: '/plugin/markdown/markdown.js' },
+                    { src: '/plugin/notes/notes.js', async: true }
+                ]
+            });
+        </script>
+    </body>
+</html>

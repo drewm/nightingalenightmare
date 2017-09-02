@@ -1,0 +1,192 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <title>Nightingale Nightmare</title>
+
+        <link rel="stylesheet" href="/css/reveal.css">
+        <link rel="stylesheet" href="/css/theme/nightmare.css">
+
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>  
+                    <h1 class="halloween">Nightingale Nightmare</h1>
+                    <img src="/img/white logo.png" class="logo" />
+                </section>
+                <?php
+                    $results = [
+                        [
+                            'key' => 'f3',
+                            'label' => '3rd Female'
+                        ],
+                        [
+                            'key' => 'f2',
+                            'label' => '2nd Female'
+                        ],
+                        [
+                            'key' => 'f1',
+                            'label' => '1st Female'
+                        ],
+
+                        [
+                            'key' => 'm3',
+                            'label' => '3rd Male'
+                        ],
+                        [
+                            'key' => 'm2',
+                            'label' => '2nd Male'
+                        ],
+                        [
+                            'key' => 'm1',
+                            'label' => '1st Male'
+                        ],
+                        
+
+                        
+                        [
+                            'key' => 'f4049',
+                            'label' => '1st Female 40 to 49'
+                        ],
+                        [
+                            'key' => 'm4049',
+                            'label' => '1st Male 40 to 49'
+                        ],
+                        
+                        [
+                            'key' => 'f5059',
+                            'label' => '1st Female 50 to 59'
+                        ],
+                        [
+                            'key' => 'm5059',
+                            'label' => '1st Male 50 to 59'
+                        ],
+
+                        [
+                            'key' => 'f60',
+                            'label' => '1st Female 60 and over'
+                        ],
+                        [
+                            'key' => 'm60',
+                            'label' => '1st Male 60 and over'
+                        ],
+                        
+                    ];
+
+                    $photo_prizes = [
+                        [
+                            'key' => 'c3',
+                            'label' => '3rd Costume'
+                        ],
+                        [
+                            'key' => 'c2',
+                            'label' => '2nd Costume'
+                        ],
+                        [
+                            'key' => 'c1',
+                            'label' => '1st Costume'
+                        ],
+                        
+                        
+                    ];
+
+                    foreach($results as $result) {
+                        if (isset($data['winners'][$result['key']])) {
+                            $runner = $data['winners'][$result['key']];
+                    ?>
+                    <section class="prize"<?php
+                            if ($runner->photo) {
+                                echo ' data-background-image="/photos/'.$runner->photo->path.'"';
+                            }
+                    ?>>  
+                        <h4 class="halloween"><?php echo $result['label']; ?></h4>
+                        <h1><?php echo $runner->first_name .' '.$runner->last_name; ?></h1>
+                        <?php
+                            
+                        ?>
+                        <h4><?php echo $runner->club; ?></h4>
+                        <h2><?php echo $runner->finish_time; ?></h1>
+                    </section>
+                    <?php 
+                        }
+                    }
+?>
+                <section>
+                <h1 class="halloween">Fancy dress</h1>
+                </section>
+
+<?php
+
+
+                    foreach($photo_prizes as $result) {
+                        if (isset($data['winners'][$result['key']])) {
+                            $runner = $data['winners'][$result['key']];
+                    ?>
+                    <section class="costume prize"<?php
+                            if ($runner->photo) {
+                                echo ' data-background-image="/photos/'.$runner->photo->path.'"';
+                            }
+                    ?>>  
+                        <h4 class="halloween"><?php echo $result['label']; ?></h4>
+                        <h3><?php echo $runner->first_name .' '.$runner->last_name; ?></h3>
+                        <h4><?php echo $runner->club; ?></h4>
+                    </section>
+                    <?php 
+                        }
+                    }
+
+
+
+                ?>
+                <section>
+                <h1 class="halloween">Marshal stations</h1>
+                </section>
+                <?php
+
+                if (isset($data['marshals'])) {
+                    foreach($data['marshals'] as $photo) {
+                    ?>
+                    <section<?php
+                            
+                            echo ' data-background-image="/photos/'.$photo->path.'"';
+                            
+                    ?>>  
+                    </section>
+                    <?php 
+                    }
+                }
+
+                ?>
+            </div>
+        </div>
+
+        <script src="/lib/js/head.min.js"></script>
+        <script src="/js/reveal.js"></script>
+
+        <script>
+            // More info https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                history: true,
+                progress: false,
+                transition: 'concave',
+                center: true,
+
+                // More info https://github.com/hakimel/reveal.js#dependencies
+                dependencies: [
+                    { src: '/plugin/markdown/marked.js' },
+                    { src: '/plugin/markdown/markdown.js' },
+                    { src: '/plugin/notes/notes.js', async: true }
+                ]
+            });
+        </script>
+        <style>
+            .prize.costume {
+                bottom: 50px;
+                top: auto !important;
+            }
+        </style>
+    </body>
+</html>

@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <title>Nightingale Nightmare</title>
+    </head>
+    <body>
+    <?php
+        $results = $data['winners'];
+        $prizes = [
+                        [
+                            'key' => 'f3',
+                            'label' => '3rd Female'
+                        ],
+                        [
+                            'key' => 'f2',
+                            'label' => '2nd Female'
+                        ],
+                        [
+                            'key' => 'f1',
+                            'label' => '1st Female'
+                        ],
+
+                        [
+                            'key' => 'm3',
+                            'label' => '3rd Male'
+                        ],
+                        [
+                            'key' => 'm2',
+                            'label' => '2nd Male'
+                        ],
+                        [
+                            'key' => 'm1',
+                            'label' => '1st Male'
+                        ],
+                        
+
+                        
+                        [
+                            'key' => 'f4049',
+                            'label' => '1st Female 40-49'
+                        ],
+                        [
+                            'key' => 'm4049',
+                            'label' => '1st Male 40-49'
+                        ],
+                        [
+                            'key' => 'f5059',
+                            'label' => '1st Female 50-59'
+                        ],
+                        [
+                            'key' => 'm5059',
+                            'label' => '1st Male 50-59'
+                        ],
+                        [
+                            'key' => 'f60',
+                            'label' => '1st Female 60+'
+                        ],
+                        [
+                            'key' => 'm60',
+                            'label' => '1st Male 60+'
+                        ],
+                        
+                        [
+                            'key' => 'c3',
+                            'label' => '3rd Costume'
+                        ],
+                        [
+                            'key' => 'c2',
+                            'label' => '2nd Costume'
+                        ],
+                        [
+                            'key' => 'c1',
+                            'label' => '1st Costume'
+                        ],
+                        
+                        
+                    ];
+    ?>
+    <table>
+    <tr>
+        <th>Prize giving order</th>
+        <th>Prize</th>
+        <th>Race position</th>
+        <th>Bib</th>
+        <th>Time</th>
+        <th>Name</th>
+        <th>Club</th>
+    </tr>
+<?php
+    $i = 1;
+    foreach($prizes as $prize) {
+        if (isset($results[$prize['key']])) {
+            $runner = $results[$prize['key']];
+
+?>
+    <tr>
+        <th><?=$i ?></th>
+        <td><?=$prize['label'] ?></td>
+        <td><?=$runner->finish_position ?></td>
+        <td><?=$runner->bib ?></td>
+        <td><?=$runner->finish_time ?></td>
+        <td><?=$runner->first_name . ' ' . $runner->last_name ?></td>
+        <td><?=$runner->club ?></td>
+    </tr>
+<?php
+        $i++;
+        }
+    }
+?>
+
+    </table>
+
+
+
+<style>
+
+body {
+    font-family: helvetica, 'sans-serif';
+}
+
+table {
+    border-collapse: collapse;
+}
+
+tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+tr, td, th {
+    border-bottom: 1px solid #ababab;
+    text-align: left;
+}
+td, th {
+    padding: .5rem 1rem;
+}
+</style>
+    </body>
+</html>
